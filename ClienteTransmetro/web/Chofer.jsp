@@ -1,6 +1,6 @@
 <%-- 
-    Document   : EstacionCalve
-    Created on : 28-ago-2015, 19:19:44
+    Document   : Chofer
+    Created on : 28-ago-2015, 19:47:33
     Author     : Adrian
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Estacion Clave</title>
+        <title>Choferes</title>
         <link rel="stylesheet" href="css/principal.css">
     </head>
     <body>
@@ -28,9 +28,9 @@
                 <ul>
                     <li><a href="Principal.jsp">Inicio</a></li>
                     <li><a href="Administrador.jsp">Administrador</a></li>
-                    <li class="current_page_item"><a href="EstacionCalve.jsp">Estación clave</a></li>
+                    <li><a href="EstacionCalve.jsp">Estación clave</a></li>
                     <li><a href="EstacionGeneral.jsp">Estación general</a></li>
-                    <li><a href="Chofer.jsp">Chofer</a></li>
+                    <li class="current_page_item"><a href="Chofer.jsp">Chofer</a></li>
                     <li><a href="Inicio.jsp">Cerrar sesión</a></li>
                 </ul>
             </div>
@@ -38,14 +38,15 @@
                 <div id="content">
                     <div class="post">
                         <div class="title">
-                            Agregar Estación Clave
+                            Agregar Chofer
                         </div>
                         <div class="entry">
                             <form  name="fClave" action="AgregarClave.jsp" method="POST" class="form" >
                                 <input type="text" placeholder="Id" name="tbId" value="">
                                 <input type="text" placeholder="Nombre" name="tbNombre" value="">
+                                <input type="text" placeholder="Apellido" name="tbApellido" value="">
                                 <input type="password" placeholder="Clave" name="tbClave" value = "">
-                                <input type="submit" name="bAgregarAdmin" value="Agregar">
+                                <input type="submit" name="bAgregarAdmin" value="Agregar chofer">
                             </form>
                         </div>
                     </div>
