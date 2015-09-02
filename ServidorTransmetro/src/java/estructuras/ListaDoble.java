@@ -171,19 +171,6 @@ public class ListaDoble {
         return null;
     }
     
-    public boolean modificar(int pos, String nombre)
-    {
-        NodoSimple x = buscarElemento(pos);
-        Elemento y = (Elemento) x.dato;
-        Elemento ele = new Elemento(nombre, y.getTipo());
-        if(x != null)
-        {
-            x.dato = ele;
-            return true;
-        }
-        return false;
-    }
-    
     public String recorrido()
     {
         NodoSimple actual = inicio;

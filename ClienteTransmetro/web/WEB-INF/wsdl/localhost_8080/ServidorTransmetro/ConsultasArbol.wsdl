@@ -4,6 +4,12 @@
 <xsd:import namespace="http://Consultas/" schemaLocation="http://localhost:8080/ServidorTransmetro/ConsultasArbol?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="insertarAdmin">
+<part name="parameters" element="tns:insertarAdmin"/>
+</message>
+<message name="insertarAdminResponse">
+<part name="parameters" element="tns:insertarAdminResponse"/>
+</message>
 <message name="IniciarSesion">
 <part name="parameters" element="tns:IniciarSesion"/>
 </message>
@@ -11,6 +17,10 @@
 <part name="parameters" element="tns:IniciarSesionResponse"/>
 </message>
 <portType name="ConsultasArbol">
+<operation name="insertarAdmin">
+<input wsam:Action="http://Consultas/ConsultasArbol/insertarAdminRequest" message="tns:insertarAdmin"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/insertarAdminResponse" message="tns:insertarAdminResponse"/>
+</operation>
 <operation name="IniciarSesion">
 <input wsam:Action="http://Consultas/ConsultasArbol/IniciarSesionRequest" message="tns:IniciarSesion"/>
 <output wsam:Action="http://Consultas/ConsultasArbol/IniciarSesionResponse" message="tns:IniciarSesionResponse"/>
@@ -18,6 +28,15 @@
 </portType>
 <binding name="ConsultasArbolPortBinding" type="tns:ConsultasArbol">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="insertarAdmin">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="IniciarSesion">
 <soap:operation soapAction=""/>
 <input>

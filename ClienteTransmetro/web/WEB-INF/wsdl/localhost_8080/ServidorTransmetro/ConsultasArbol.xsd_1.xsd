@@ -4,6 +4,10 @@
 
 <xs:element name="IniciarSesionResponse" type="tns:IniciarSesionResponse"/>
 
+<xs:element name="insertarAdmin" type="tns:insertarAdmin"/>
+
+<xs:element name="insertarAdminResponse" type="tns:insertarAdminResponse"/>
+
 <xs:complexType name="IniciarSesion">
 <xs:sequence>
 <xs:element name="id" type="xs:string" minOccurs="0"/>
@@ -14,6 +18,19 @@
 <xs:complexType name="IniciarSesionResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertarAdmin">
+<xs:sequence>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="clave" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertarAdminResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>
