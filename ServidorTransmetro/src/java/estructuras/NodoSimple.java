@@ -14,15 +14,11 @@ public class NodoSimple {
     //ATRIBUTOS
     public Object dato;
     public NodoSimple siguiente, anterior;
-    public JLabel lObjeto;
-    public int direccion;
     //METODOS
     public NodoSimple(Object nuevoDato)
     {
         this.dato = nuevoDato;
         siguiente = null;
         anterior = null;
-        lObjeto = new JLabel();
-        direccion = 1;
     }
 }

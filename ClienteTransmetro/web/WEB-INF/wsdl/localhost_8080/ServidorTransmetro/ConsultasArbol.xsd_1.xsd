@@ -4,9 +4,49 @@
 
 <xs:element name="IniciarSesionResponse" type="tns:IniciarSesionResponse"/>
 
+<xs:element name="generarArchivo" type="tns:generarArchivo"/>
+
+<xs:element name="generarArchivoResponse" type="tns:generarArchivoResponse"/>
+
 <xs:element name="insertarAdmin" type="tns:insertarAdmin"/>
 
 <xs:element name="insertarAdminResponse" type="tns:insertarAdminResponse"/>
+
+<xs:element name="insertarBus" type="tns:insertarBus"/>
+
+<xs:element name="insertarBusResponse" type="tns:insertarBusResponse"/>
+
+<xs:element name="insertarEstacionClave" type="tns:insertarEstacionClave"/>
+
+<xs:element name="insertarEstacionClaveResponse" type="tns:insertarEstacionClaveResponse"/>
+
+<xs:element name="insertarEstacionGeneral" type="tns:insertarEstacionGeneral"/>
+
+<xs:element name="insertarEstacionGeneralResponse" type="tns:insertarEstacionGeneralResponse"/>
+
+<xs:complexType name="generarArchivo">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generarArchivoResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="insertarEstacionGeneral">
+<xs:sequence>
+<xs:element name="idEstacion" type="xs:int"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="clave" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertarEstacionGeneralResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="IniciarSesion">
 <xs:sequence>
@@ -21,6 +61,20 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="insertarEstacionClave">
+<xs:sequence>
+<xs:element name="idEstacion" type="xs:int"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="clave" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertarEstacionClaveResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="insertarAdmin">
 <xs:sequence>
 <xs:element name="correo" type="xs:string" minOccurs="0"/>
@@ -29,6 +83,18 @@
 </xs:complexType>
 
 <xs:complexType name="insertarAdminResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertarBus">
+<xs:sequence>
+<xs:element name="idBus" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertarBusResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>

@@ -4,11 +4,11 @@
 <xsd:import namespace="http://Consultas/" schemaLocation="http://localhost:8080/ServidorTransmetro/ConsultasArbol?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="insertarAdmin">
-<part name="parameters" element="tns:insertarAdmin"/>
+<message name="generarArchivo">
+<part name="parameters" element="tns:generarArchivo"/>
 </message>
-<message name="insertarAdminResponse">
-<part name="parameters" element="tns:insertarAdminResponse"/>
+<message name="generarArchivoResponse">
+<part name="parameters" element="tns:generarArchivoResponse"/>
 </message>
 <message name="IniciarSesion">
 <part name="parameters" element="tns:IniciarSesion"/>
@@ -16,19 +16,59 @@
 <message name="IniciarSesionResponse">
 <part name="parameters" element="tns:IniciarSesionResponse"/>
 </message>
+<message name="insertarAdmin">
+<part name="parameters" element="tns:insertarAdmin"/>
+</message>
+<message name="insertarAdminResponse">
+<part name="parameters" element="tns:insertarAdminResponse"/>
+</message>
+<message name="insertarEstacionGeneral">
+<part name="parameters" element="tns:insertarEstacionGeneral"/>
+</message>
+<message name="insertarEstacionGeneralResponse">
+<part name="parameters" element="tns:insertarEstacionGeneralResponse"/>
+</message>
+<message name="insertarEstacionClave">
+<part name="parameters" element="tns:insertarEstacionClave"/>
+</message>
+<message name="insertarEstacionClaveResponse">
+<part name="parameters" element="tns:insertarEstacionClaveResponse"/>
+</message>
+<message name="insertarBus">
+<part name="parameters" element="tns:insertarBus"/>
+</message>
+<message name="insertarBusResponse">
+<part name="parameters" element="tns:insertarBusResponse"/>
+</message>
 <portType name="ConsultasArbol">
-<operation name="insertarAdmin">
-<input wsam:Action="http://Consultas/ConsultasArbol/insertarAdminRequest" message="tns:insertarAdmin"/>
-<output wsam:Action="http://Consultas/ConsultasArbol/insertarAdminResponse" message="tns:insertarAdminResponse"/>
+<operation name="generarArchivo">
+<input wsam:Action="http://Consultas/ConsultasArbol/generarArchivoRequest" message="tns:generarArchivo"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/generarArchivoResponse" message="tns:generarArchivoResponse"/>
 </operation>
 <operation name="IniciarSesion">
 <input wsam:Action="http://Consultas/ConsultasArbol/IniciarSesionRequest" message="tns:IniciarSesion"/>
 <output wsam:Action="http://Consultas/ConsultasArbol/IniciarSesionResponse" message="tns:IniciarSesionResponse"/>
 </operation>
+<operation name="insertarAdmin">
+<input wsam:Action="http://Consultas/ConsultasArbol/insertarAdminRequest" message="tns:insertarAdmin"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/insertarAdminResponse" message="tns:insertarAdminResponse"/>
+</operation>
+<operation name="insertarEstacionGeneral">
+<input wsam:Action="http://Consultas/ConsultasArbol/insertarEstacionGeneralRequest" message="tns:insertarEstacionGeneral"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/insertarEstacionGeneralResponse" message="tns:insertarEstacionGeneralResponse"/>
+</operation>
+<operation name="insertarEstacionClave">
+<input wsam:Action="http://Consultas/ConsultasArbol/insertarEstacionClaveRequest" message="tns:insertarEstacionClave"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/insertarEstacionClaveResponse" message="tns:insertarEstacionClaveResponse"/>
+</operation>
+<operation name="insertarBus">
+<input wsam:Action="http://Consultas/ConsultasArbol/insertarBusRequest" message="tns:insertarBus"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/insertarBusResponse" message="tns:insertarBusResponse"/>
+</operation>
 </portType>
 <binding name="ConsultasArbolPortBinding" type="tns:ConsultasArbol">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="insertarAdmin">
+<operation name="generarArchivo">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -38,6 +78,42 @@
 </output>
 </operation>
 <operation name="IniciarSesion">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="insertarAdmin">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="insertarEstacionGeneral">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="insertarEstacionClave">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="insertarBus">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

@@ -156,7 +156,7 @@ public class ListaDoble {
         return false;
     }
     
-    private NodoSimple buscarElemento(int pos)
+    private NodoSimple buscarPos(int pos)
     {
         NodoSimple actual = inicio;
         int cont = 1;
@@ -171,20 +171,7 @@ public class ListaDoble {
         return null;
     }
     
-    public String recorrido()
-    {
-        NodoSimple actual = inicio;
-        String salida = "";
-        while(actual != null)
-        {
-            Elemento x = (Elemento) actual.dato;
-            salida += "Nombre:" + x.getNombre() + " Tipo:" + Integer.toString(x.getTipo()) + "\n";
-            actual = actual.siguiente;
-        }
-        return salida;
-    }
-    
-    public String generarGrafo()
+    public String generarGrafoBuses()
     {
         String grafo = "digraph G\n{\n";
         grafo += "node [shape = box, style = \"rounded, filled\", color = black, fontcolor = white];\n";
@@ -193,15 +180,15 @@ public class ListaDoble {
         grafo += "orientatio = landscape;\n";
         grafo += "center = true;\n";
         grafo += "edge [arrowhead = odot, arrowtail = odot, color = red, dir = both];\n";
-        grafo += "label = \" Lista doblemente enlazada de OBJETOS \";\n";
+        grafo += "label = \" Lista doblemente enlazada de Buses \";\n";
         
         NodoSimple actual = inicio;
         int cont = 1;
-        Elemento x;
+        int x;
         while (actual != null)
         {//se crean los nodos del grafo
-            x = (Elemento) actual.dato;
-            grafo += "nodo" + cont + "[label = \"Nombre: " + x.getNombre() + "\"];\n";
+            x = (int) actual.dato;
+            grafo += "nodo" + cont + "[label = \"idBus: " + x + "\"];\n";
             cont++;
             actual = actual.siguiente;
         }
@@ -221,54 +208,6 @@ public class ListaDoble {
         return grafo;
     }
     
-    public String resumen()
-    {
-        NodoSimple actual = inicio;
-        int suelos = 0, paredes = 0, fichas = 0, vidas = 0, goombas = 0, koopas = 0, personaje = 0, castillo = 0;
-        Elemento x;
-        while (actual != null)
-        {
-            x = (Elemento) actual.dato;
-            switch(x.getTipo())
-            {
-                case 1:
-                    suelos++;
-                    break;
-                case 2:
-                    paredes++;
-                    break;
-                case 3:
-                    fichas++;
-                    break;
-                case 4:
-                    vidas++;
-                    break;
-                case 5:
-                    goombas++;
-                    break;
-                case 6:
-                    koopas++;
-                    break;
-                case 7:
-                    personaje++;
-                    break;
-                case 8:
-                    castillo++;
-                    break;
-            }
-            actual = actual.siguiente;
-        }
-        String salida = "Suelos: " + suelos + "\n";
-        salida += "Paredes: " + paredes + "\n";
-        salida += "Fichas: " + fichas + "\n";
-        salida += "Vidas: " + vidas + "\n";
-        salida += "Goomba: " + goombas + "\n";
-        salida += "Koopa: " + koopas + "\n";
-        salida += "Personaje Principal: " + personaje + "\n";
-        salida += "Castillo: " + castillo + "\n";
-        return salida;
-    }
-
     public int getTipoEstrcutura() {
         return tipoEstrcutura;
     }

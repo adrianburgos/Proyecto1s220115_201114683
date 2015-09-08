@@ -28,7 +28,7 @@
                 <ul>
                     <li><a href="Principal.jsp">Inicio</a></li>
                     <li><a href="Administrador.jsp">Administrador</a></li>
-                    <li class="current_page_item"><a href="EstacionCalve.jsp">Estación clave</a></li>
+                    <li class="current_page_item"><a href="EstacionClave.jsp">Estación clave</a></li>
                     <li><a href="EstacionGeneral.jsp">Estación general</a></li>
                     <li><a href="Chofer.jsp">Chofer</a></li>
                     <li><a href="Inicio.jsp">Cerrar sesión</a></li>

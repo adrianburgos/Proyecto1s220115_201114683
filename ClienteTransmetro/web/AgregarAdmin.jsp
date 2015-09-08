@@ -29,7 +29,7 @@
                 System.out.println(result);
                 //response.sendRedirect("Administrador.jsp");
                 out.println("InOrden: "+result);
-                %><a href="Administrador.jsp">Continuar</a> <%
+                response.sendRedirect("Administrador.jsp");
                 
             } catch (Exception ex) {
                 // TODO handle custom exceptions here

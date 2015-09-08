@@ -1,0 +1,13 @@
+digraph G
+{
+node [shape = box, style = "rounded, filled", color = black, fontcolor = white];
+style = filled;
+bgcolor = lightgray;
+orientatio = landscape;
+center = true;
+edge [arrowhead = none, arrowtail = none, color = red, dir = both];
+nodo1[label = "Correo (jenny@hotmail.com)
+Clave: jenny"];
+label = " Arbol AVL Administradores ";
+
+}

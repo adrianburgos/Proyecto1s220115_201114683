@@ -28,7 +28,7 @@
                 <ul>
                     <li><a href="Principal.jsp">Inicio</a></li>
                     <li><a href="Administrador.jsp">Administrador</a></li>
-                    <li><a href="EstacionCalve.jsp">Estación clave</a></li>
+                    <li><a href="EstacionClave.jsp">Estación clave</a></li>
                     <li><a href="EstacionGeneral.jsp">Estación general</a></li>
                     <li class="current_page_item"><a href="Chofer.jsp">Chofer</a></li>
                     <li><a href="Inicio.jsp">Cerrar sesión</a></li>
@@ -41,7 +41,7 @@
                             Agregar Chofer
                         </div>
                         <div class="entry">
-                            <form  name="fClave" action="AgregarClave.jsp" method="POST" class="form" >
+                            <form  name="fChofer" action="AgregarChofer.jsp" method="POST" class="form" >
                                 <input type="text" placeholder="Id" name="tbId" value="">
                                 <input type="text" placeholder="Nombre" name="tbNombre" value="">
                                 <input type="text" placeholder="Apellido" name="tbApellido" value="">
@@ -49,6 +49,24 @@
                                 <input type="submit" name="bAgregarAdmin" value="Agregar chofer">
                             </form>
                         </div>
+                    </div>
+                </div>
+                <div id="sidebar-bg">
+                    <div id="sidebar">
+                        <ul>
+                            <li>
+                                <h1>Buses</h1>
+                                <div class="entry">
+                                    <form  name="fBus" action="AgregarBus.jsp" method="POST" class="form" >
+                                        <input type="text" placeholder="Id bus" name="tbId" value="">
+                                        <input type="submit" name="bAgregarBus" value="Agregar bus">
+                                    </form>
+                                </div>
+                            </li>
+                            <li>
+                                <h1>Rutas</h1>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

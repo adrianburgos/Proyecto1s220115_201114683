@@ -28,7 +28,7 @@
                 <ul>
                     <li><a href="Principal.jsp">Inicio</a></li>
                     <li><a href="Administrador.jsp">Administrador</a></li>
-                    <li><a href="EstacionCalve.jsp">Estación clave</a></li>
+                    <li><a href="EstacionClave.jsp">Estación clave</a></li>
                     <li class="current_page_item"><a href="EstacionGeneral.jsp">Estación general</a></li>
                     <li><a href="Chofer.jsp">Chofer</a></li>
                     <li><a href="Inicio.jsp">Cerrar sesión</a></li>
@@ -41,7 +41,7 @@
                             Agregar Estación General
                         </div>
                         <div class="entry">
-                            <form  name="fClave" action="AgregarClave.jsp" method="POST" class="form" >
+                            <form  name="fClave" action="AgregarGeneral.jsp" method="POST" class="form" >
                                 <input type="text" placeholder="Id" name="tbId" value="">
                                 <input type="text" placeholder="Nombre" name="tbNombre" value="">
                                 <input type="password" placeholder="Clave" name="tbClave" value = "">

@@ -311,7 +311,7 @@ img.aligncenter {
   border: 1;
   padding: 10px 15px;
   color: #53e3a6;
-  border-radius: 3px;
+  border-radius: 10px;
   width: 220px;
   cursor: pointer;
   font-size: 18px;
@@ -388,6 +388,55 @@ img.aligncenter {
 	margin: 0 0px;
 	padding: 0px 20px 20px 20px;
 	text-align: justify;
+}
+
+#sidebar .entry form {
+  padding: 20px 0;
+  position: relative;
+  z-index: 2;
+}
+#sidebar .entry form input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 150px;
+  border-radius: 100px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+  font-weight: 300;
+}
+#sidebar .entry form input:hover {
+  background-color: rgba(83, 227, 166, 0.4);
+}
+#sidebar .entry form input:focus {
+  background-color: rgba(83, 227, 166, 0.6);
+  width: 200px;
+  color: #53e3a6;
+}
+#sidebar .entry form input[type = "submit"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  background-color: white;
+  border: 1;
+  padding: 10px 15px;
+  color: #53e3a6;
+  border-radius: 10px;
+  width: 150px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
 }
 
 #sidebar a {

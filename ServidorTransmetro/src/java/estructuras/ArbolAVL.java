@@ -30,6 +30,10 @@ public class ArbolAVL {
             case 1:
                 raiz = insertarAdmin(raiz, ele, h);
                 break;
+            case 2:
+            case 3:
+                raiz = insertarEstacion(raiz, ele, h);
+                break;
         }
     }
     /**
@@ -107,6 +111,82 @@ public class ArbolAVL {
         }
         return raiz;
     }
+    
+    /**
+     * inserta un elemento en el arbolAVL para las estaciones
+     * se ordenara por medio del idEstacion
+     * @param raiz raiz del arbol
+     * @param ele elemnto que se desea insertar
+     */
+    private NodoArbol insertarEstacion(NodoArbol raiz, Object ele, Booleana h)
+    {
+        NodoArbol n1;
+        if(raiz == null)
+        {
+            raiz = new NodoArbol(ele);
+            h.setB(true);
+        }
+        else
+        {
+            Elemento x = (Elemento) ele;
+            Elemento actual = (Elemento) raiz.dato;
+            if(x.getId() < actual.getId())
+            {//el id es menor que el del la raiz
+                NodoArbol izq = insertarEstacion(raiz.izq, ele, h);
+                raiz.izq = izq;
+                if(h.isB())
+                {
+                    switch(raiz.fe)
+                    {
+                        case 1:
+                            raiz.fe = 0;
+                            h.setB(false);
+                            break;
+                        case 0:
+                            raiz.fe = -1;
+                            break;
+                        case -1:
+                            n1 = raiz.izq;
+                            if(n1.fe == -1)
+                                raiz = II(raiz, n1);
+                            else
+                                raiz = ID(raiz, n1);
+                            h.setB(false);
+                            break;
+                    }
+                }
+            }
+            else
+                if(x.getId() > actual.getId())
+                {//el id es mayor que el del la raiz
+                    NodoArbol der = insertarEstacion(raiz.der, ele, h);
+                    raiz.der = der;
+                    if(h.isB())
+                    {
+                        switch(raiz.fe)
+                        {
+                            case 1:
+                                n1 = raiz.der;
+                                if(n1.fe == 1)
+                                    raiz = DD(raiz, n1);
+                                else
+                                    raiz = DI(raiz, n1);
+                                h.setB(false);
+                                break;
+                            case 0:
+                                raiz.fe = 1;
+                                break;
+                            case -1:
+                                raiz.fe = 0;
+                                h.setB(false);
+                        }
+                    }
+                }
+                else
+                    System.out.println("El correo ya esta registrador");
+        }
+        return raiz;
+    }    
     
     private NodoArbol II(NodoArbol n, NodoArbol n1)
     {
@@ -220,11 +300,19 @@ public class ArbolAVL {
 	salida += "orientatio = landscape;\n";
 	salida += "center = true;\n";
 	salida += "edge [arrowhead = none, arrowtail = none, color = red, dir = both];\n";
-	salida += "label = \" Arbol AVL Usuaris \";\n";
         switch(tipo)
         {
             case 1:
-                salida += recorridoGrafoAdmin(raiz,tipo);
+                salida += recorridoGrafoAdmin(raiz,1);
+                salida += "label = \" Arbol AVL Administradores \";\n";
+                break;
+            case 2:
+                salida += recorridoGrafoEstaciones(raiz,1);
+                salida += "label = \" Arbol AVL Estaciones claves \";\n";
+                break;
+            case 3:
+                salida += recorridoGrafoEstaciones(raiz,1);
+                salida += "label = \" Arbol AVL Estaciones generales \";\n";
                 break;
         }
         salida += "\n}";
@@ -256,6 +344,41 @@ public class ArbolAVL {
             }
             
             String ladoDerecho= recorridoGrafoAdmin(raiz.der, cont * 10 + 2);
+            if(ladoDerecho != "")
+            {
+                recorrido += ladoDerecho;
+                recorrido += "nodo" + cont + "-> nodo" + (cont * 10 + 2) + ";\n";
+            }
+        }
+
+    return recorrido;
+    }
+    
+    /**
+     * Genera el string para el ArbolAVL de estaciones clave y general
+     * @param raiz
+     * @param cont contador para identificar los nodos
+     * @return 
+     */
+    private String recorridoGrafoEstaciones(NodoArbol raiz, int cont)
+    {
+        String recorrido = "";
+        if(raiz != null)
+        {//existe nodo
+        Elemento x = (Elemento) raiz.dato;
+            recorrido += "nodo" + cont;
+            recorrido += "[label = \"id (" + x.getId() + ")\n";
+            recorrido += "Nombre: " + x.getNombre() + "\n";
+            recorrido += "Clave: " + x.getClave() + "\"];\n";
+            
+            String ladoIzquierdo = recorridoGrafoEstaciones(raiz.izq, cont * 10 + 1);
+            if(ladoIzquierdo != "")
+            {
+                recorrido += ladoIzquierdo;
+                recorrido += "nodo" + cont + "-> nodo" + (cont * 10 + 1) + ";\n";
+            }
+            
+            String ladoDerecho= recorridoGrafoEstaciones(raiz.der, cont * 10 + 2);
             if(ladoDerecho != "")
             {
                 recorrido += ladoDerecho;
