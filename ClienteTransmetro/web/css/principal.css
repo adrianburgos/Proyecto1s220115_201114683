@@ -38,7 +38,7 @@ h3 {
 	font-size: 1.6em;
 }
 
-p, ul, ol {
+ul, ol {
 	margin-top: 0;
 	line-height: 180%;
 }
@@ -264,7 +264,7 @@ img.aligncenter {
 }
 
 .post .entry {
-    text-align: justify;
+    text-align: center;
     margin-bottom: 25px;
     padding: 10px 0px 0px 0px;
     position: relative;
@@ -274,6 +274,10 @@ img.aligncenter {
   padding: 20px 0;
   position: relative;
   z-index: 2;
+}
+
+.post .entry form .titulo {
+    position: relative;
 }
 .post .entry form input {
   -webkit-appearance: none;
@@ -317,6 +321,31 @@ img.aligncenter {
   font-size: 18px;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
+}
+
+.post .entry form select {
+  outline: 0;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 220px;
+  border-radius: 100px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+  font-weight: 300;
+}
+.post .entry form select:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.post .entry form select:focus {
+  background-color: white;
+  width: 270px;
+  color: #53e3a6;
 }
 
 .links {
@@ -409,7 +438,7 @@ img.aligncenter {
   display: block;
   text-align: center;
   font-size: 18px;
-  color: white;
+  color: black;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
   font-weight: 300;
@@ -420,7 +449,7 @@ img.aligncenter {
 #sidebar .entry form input:focus {
   background-color: rgba(83, 227, 166, 0.6);
   width: 200px;
-  color: #53e3a6;
+  color: black;
 }
 #sidebar .entry form input[type = "submit"] {
   -webkit-appearance: none;
@@ -443,8 +472,44 @@ img.aligncenter {
 	border: none;
 }
 
+#sidebar a .imagen{
+	width: 200px;
+        height: 300px;
+        background: url(images/grafo.png);
+        background-repeat: no-repeat;
+        position: relative;
+}
+
 #sidebar a:hover {
 	text-decoration: underline;
+}
+
+#sidebar .entry form select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 150px;
+  border-radius: 100px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: black;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+  font-weight: 300;
+}
+#sidebar .entry form select:hover {
+  background-color: rgba(83, 227, 166, 0.4);
+}
+#sidebar .entry form select:focus {
+  background-color: rgba(83, 227, 166, 0.6);
+  width: 200px;
+  color: black;
 }
 
 /* Calendar */

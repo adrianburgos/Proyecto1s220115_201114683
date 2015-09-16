@@ -4,17 +4,41 @@
 <xsd:import namespace="http://Consultas/" schemaLocation="http://localhost:8080/ServidorTransmetro/ConsultasArbol?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="generarArchivo">
-<part name="parameters" element="tns:generarArchivo"/>
+<message name="agregarChofer">
+<part name="parameters" element="tns:agregarChofer"/>
 </message>
-<message name="generarArchivoResponse">
-<part name="parameters" element="tns:generarArchivoResponse"/>
+<message name="agregarChoferResponse">
+<part name="parameters" element="tns:agregarChoferResponse"/>
+</message>
+<message name="rutaGeneral">
+<part name="parameters" element="tns:rutaGeneral"/>
+</message>
+<message name="rutaGeneralResponse">
+<part name="parameters" element="tns:rutaGeneralResponse"/>
+</message>
+<message name="cbEstacionesClave">
+<part name="parameters" element="tns:cbEstacionesClave"/>
+</message>
+<message name="cbEstacionesClaveResponse">
+<part name="parameters" element="tns:cbEstacionesClaveResponse"/>
+</message>
+<message name="cbEstacionesGeneral">
+<part name="parameters" element="tns:cbEstacionesGeneral"/>
+</message>
+<message name="cbEstacionesGeneralResponse">
+<part name="parameters" element="tns:cbEstacionesGeneralResponse"/>
 </message>
 <message name="IniciarSesion">
 <part name="parameters" element="tns:IniciarSesion"/>
 </message>
 <message name="IniciarSesionResponse">
 <part name="parameters" element="tns:IniciarSesionResponse"/>
+</message>
+<message name="generarArchivo">
+<part name="parameters" element="tns:generarArchivo"/>
+</message>
+<message name="generarArchivoResponse">
+<part name="parameters" element="tns:generarArchivoResponse"/>
 </message>
 <message name="insertarAdmin">
 <part name="parameters" element="tns:insertarAdmin"/>
@@ -40,14 +64,66 @@
 <message name="insertarBusResponse">
 <part name="parameters" element="tns:insertarBusResponse"/>
 </message>
+<message name="grafo">
+<part name="parameters" element="tns:grafo"/>
+</message>
+<message name="grafoResponse">
+<part name="parameters" element="tns:grafoResponse"/>
+</message>
+<message name="crearRuta">
+<part name="parameters" element="tns:crearRuta"/>
+</message>
+<message name="crearRutaResponse">
+<part name="parameters" element="tns:crearRutaResponse"/>
+</message>
+<message name="rutaClave">
+<part name="parameters" element="tns:rutaClave"/>
+</message>
+<message name="rutaClaveResponse">
+<part name="parameters" element="tns:rutaClaveResponse"/>
+</message>
+<message name="cbRutas">
+<part name="parameters" element="tns:cbRutas"/>
+</message>
+<message name="cbRutasResponse">
+<part name="parameters" element="tns:cbRutasResponse"/>
+</message>
+<message name="cbBuses">
+<part name="parameters" element="tns:cbBuses"/>
+</message>
+<message name="cbBusesResponse">
+<part name="parameters" element="tns:cbBusesResponse"/>
+</message>
+<message name="cbChoferes">
+<part name="parameters" element="tns:cbChoferes"/>
+</message>
+<message name="cbChoferesResponse">
+<part name="parameters" element="tns:cbChoferesResponse"/>
+</message>
 <portType name="ConsultasArbol">
-<operation name="generarArchivo">
-<input wsam:Action="http://Consultas/ConsultasArbol/generarArchivoRequest" message="tns:generarArchivo"/>
-<output wsam:Action="http://Consultas/ConsultasArbol/generarArchivoResponse" message="tns:generarArchivoResponse"/>
+<operation name="agregarChofer">
+<input wsam:Action="http://Consultas/ConsultasArbol/agregarChoferRequest" message="tns:agregarChofer"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/agregarChoferResponse" message="tns:agregarChoferResponse"/>
+</operation>
+<operation name="rutaGeneral">
+<input wsam:Action="http://Consultas/ConsultasArbol/rutaGeneralRequest" message="tns:rutaGeneral"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/rutaGeneralResponse" message="tns:rutaGeneralResponse"/>
+</operation>
+<operation name="cbEstacionesClave">
+<input wsam:Action="http://Consultas/ConsultasArbol/cbEstacionesClaveRequest" message="tns:cbEstacionesClave"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/cbEstacionesClaveResponse" message="tns:cbEstacionesClaveResponse"/>
+</operation>
+<operation name="cbEstacionesGeneral">
+<input wsam:Action="http://Consultas/ConsultasArbol/cbEstacionesGeneralRequest" message="tns:cbEstacionesGeneral"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/cbEstacionesGeneralResponse" message="tns:cbEstacionesGeneralResponse"/>
 </operation>
 <operation name="IniciarSesion">
 <input wsam:Action="http://Consultas/ConsultasArbol/IniciarSesionRequest" message="tns:IniciarSesion"/>
 <output wsam:Action="http://Consultas/ConsultasArbol/IniciarSesionResponse" message="tns:IniciarSesionResponse"/>
+</operation>
+<operation name="generarArchivo">
+<input wsam:Action="http://Consultas/ConsultasArbol/generarArchivoRequest" message="tns:generarArchivo"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/generarArchivoResponse" message="tns:generarArchivoResponse"/>
 </operation>
 <operation name="insertarAdmin">
 <input wsam:Action="http://Consultas/ConsultasArbol/insertarAdminRequest" message="tns:insertarAdmin"/>
@@ -65,10 +141,61 @@
 <input wsam:Action="http://Consultas/ConsultasArbol/insertarBusRequest" message="tns:insertarBus"/>
 <output wsam:Action="http://Consultas/ConsultasArbol/insertarBusResponse" message="tns:insertarBusResponse"/>
 </operation>
+<operation name="grafo">
+<input wsam:Action="http://Consultas/ConsultasArbol/grafoRequest" message="tns:grafo"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/grafoResponse" message="tns:grafoResponse"/>
+</operation>
+<operation name="crearRuta">
+<input wsam:Action="http://Consultas/ConsultasArbol/crearRutaRequest" message="tns:crearRuta"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/crearRutaResponse" message="tns:crearRutaResponse"/>
+</operation>
+<operation name="rutaClave">
+<input wsam:Action="http://Consultas/ConsultasArbol/rutaClaveRequest" message="tns:rutaClave"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/rutaClaveResponse" message="tns:rutaClaveResponse"/>
+</operation>
+<operation name="cbRutas">
+<input wsam:Action="http://Consultas/ConsultasArbol/cbRutasRequest" message="tns:cbRutas"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/cbRutasResponse" message="tns:cbRutasResponse"/>
+</operation>
+<operation name="cbBuses">
+<input wsam:Action="http://Consultas/ConsultasArbol/cbBusesRequest" message="tns:cbBuses"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/cbBusesResponse" message="tns:cbBusesResponse"/>
+</operation>
+<operation name="cbChoferes">
+<input wsam:Action="http://Consultas/ConsultasArbol/cbChoferesRequest" message="tns:cbChoferes"/>
+<output wsam:Action="http://Consultas/ConsultasArbol/cbChoferesResponse" message="tns:cbChoferesResponse"/>
+</operation>
 </portType>
 <binding name="ConsultasArbolPortBinding" type="tns:ConsultasArbol">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="generarArchivo">
+<operation name="agregarChofer">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="rutaGeneral">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="cbEstacionesClave">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="cbEstacionesGeneral">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -78,6 +205,15 @@
 </output>
 </operation>
 <operation name="IniciarSesion">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="generarArchivo">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -114,6 +250,60 @@
 </output>
 </operation>
 <operation name="insertarBus">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="grafo">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="crearRuta">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="rutaClave">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="cbRutas">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="cbBuses">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="cbChoferes">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

@@ -50,6 +50,67 @@
                             </form>
                         </div>
                     </div>
+                    <div class="post">
+                        <div class="title">
+                            Asignacion de buses
+                        </div>
+                        <div class="entry">
+                            <form  name="fChofer" action="AgregarAsignacion.jsp" method="POST" class="form" >
+                                <div class="titulo">Bus</div>
+                                <select name = "cbBuses">
+                                        <%-- start web service invocation --%><hr/>
+                                        <%
+                                        try {
+                                            Cliente.ConsultasArbol_Service service = new Cliente.ConsultasArbol_Service();
+                                            Cliente.ConsultasArbol port = service.getConsultasArbolPort();
+                                            // TODO process result here
+                                            java.lang.String result = port.cbBuses();
+                                            out.println(result);
+                                        } catch (Exception ex) {
+                                            // TODO handle custom exceptions here
+                                        }
+                                        %>
+                                        <%-- end web service invocation --%><hr/>
+                                </select>
+                                <div class="titulo">Chofer</div>
+                                <select name="cbChoferes">
+                                        <%-- start web service invocation --%><hr/>
+                                        <%
+                                        try {
+                                            Cliente.ConsultasArbol_Service service = new Cliente.ConsultasArbol_Service();
+                                            Cliente.ConsultasArbol port = service.getConsultasArbolPort();
+                                            // TODO process result here
+                                            java.lang.String result = port.cbChoferes();
+                                            out.println(result);
+                                        } catch (Exception ex) {
+                                            // TODO handle custom exceptions here
+                                        }
+                                        %>
+                                        <%-- end web service invocation --%><hr/>
+                                </select>
+                                <div class="titulo">Ruta</div>
+                                <select name="cbRutas">
+                                        <%-- start web service invocation --%><hr/>
+                                        <%
+                                        try {
+                                            Cliente.ConsultasArbol_Service service = new Cliente.ConsultasArbol_Service();
+                                            Cliente.ConsultasArbol port = service.getConsultasArbolPort();
+                                            // TODO process result here
+                                            java.lang.String result = port.cbRutas();
+                                            out.println(result);
+                                        } catch (Exception ex) {
+                                            // TODO handle custom exceptions here
+                                        }
+                                        %>
+                                        <%-- end web service invocation --%><hr/>
+                                </select>
+                                <input type="time" placeholder="Hora de inicio" name="tbInicio" value="">
+                                <input type="time" placeholder="Hora de finalizar" name="tbInicio" value="">
+                                <input type="date" placeholder="Fecha" name="tbFehca" value = "">
+                                <input type="submit" name="bAsignacion" value="Asignar">
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div id="sidebar-bg">
                     <div id="sidebar">
@@ -58,13 +119,79 @@
                                 <h1>Buses</h1>
                                 <div class="entry">
                                     <form  name="fBus" action="AgregarBus.jsp" method="POST" class="form" >
-                                        <input type="text" placeholder="Id bus" name="tbId" value="">
+                                        <input type="text" placeholder="Id bus" name="tbIdBus" value="">
                                         <input type="submit" name="bAgregarBus" value="Agregar bus">
                                     </form>
                                 </div>
                             </li>
                             <li>
                                 <h1>Rutas</h1>
+                                <div class="entry">
+                                    <form  name="fRutaClave" method="POST" class="form" action="CrearRuta.jsp" >
+                                        <%
+                                            String x = request.getParameter("x");
+                                            if(x != null)
+                                            {
+                                                if(x.equals("1"))
+                                                {
+                                                %>
+                                    </form>
+                                                <form>
+                                                    <input type="text" placeholder="Id ruta" name="tbIdRuta" value="<%=request.getParameter("id")%>">
+                                                    <input type="text" placeholder="Nombre" name="tbNombreRuta" value="<%=request.getParameter("nombre")%>">
+                                                </form>
+                                                <form  name="fRutaClave" method="POST" class="form" action="RutaClave.jsp?idRuta=<%=request.getParameter("id")%>&nombreRuta=<%=request.getParameter("nombre")%>" >
+                                                    <select name="cbClave">
+                                                            <%-- start web service invocation --%>
+                                                            <%
+                                                            try {
+                                                                Cliente.ConsultasArbol_Service service = new Cliente.ConsultasArbol_Service();
+                                                                Cliente.ConsultasArbol port = service.getConsultasArbolPort();
+                                                                // TODO process result here
+                                                                java.lang.String result = port.cbEstacionesClave();
+                                                                out.println(result);
+                                                            } catch (Exception ex) {
+                                                                out.println("ERROR");
+                                                            }
+                                                            %>
+                                                            <%-- end web service invocation --%>
+                                                    </select>
+                                                    <br>
+                                                    <input type="submit" name="bAgregarClave" value="Agregar clave">
+                                                </form>
+                                                <form  name="fRutaGeneral" method="POST" class="form" action="RutaGeneral.jsp?idRuta=<%=request.getParameter("id")%>&nombreRuta=<%=request.getParameter("nombre")%>" >
+                                                    <select name="cbGeneral">
+                                                            <%-- start web service invocation --%>
+                                                            <%
+                                                            try {
+                                                                Cliente.ConsultasArbol_Service service = new Cliente.ConsultasArbol_Service();
+                                                                Cliente.ConsultasArbol port = service.getConsultasArbolPort();
+                                                                // TODO process result here
+                                                                java.lang.String result = port.cbEstacionesGeneral();
+                                                                out.println(result);
+                                                            } catch (Exception ex) {
+                                                                out.println("ERROR");
+                                                            }
+                                                            %>
+                                                            <%-- end web service invocation --%>
+                                                    </select>
+                                                    <br>
+                                                    <input type="submit" name="bAgregarGeneral" value="Agregar general">
+                                                </form>
+                                                <%
+                                                }
+                                            }
+                                            else
+                                                {
+                                                    %>
+                                                    <input type="text" placeholder="Id ruta" name="tbIdRuta" value="">
+                                                    <input type="text" placeholder="Nombre" name="tbNombreRuta" value="">
+                                                    <input type="submit" name="bCrearRuta" value="Crear/Obtener">
+                                    </form>
+                                                    <%
+                                                }
+                                        %>            
+                                </div>
                             </li>
                         </ul>
                     </div>

@@ -9,17 +9,24 @@ package estructuras;
  */
 
 public class Elemento {
+    
     private String nombre;
     private String apellido;
     private String correo;
     private String clave;
     private int id;
     private int tipo;
+    private ListaDoble listaEstaciones;
+    private ListaDoble listaAsignaciones;
 
     /**
      * Constructor de las estaciones
      * Calve y general
-     */ 
+     * @param nombre
+     * @param clave
+     * @param id
+     * @param tipo 
+     */
     public Elemento(String nombre, String clave, int id, int tipo) {
         this.nombre = nombre;
         this.clave = clave;
@@ -29,18 +36,23 @@ public class Elemento {
 
     /**
      * Constructor del administrador
-     * 
+     * @param correo
+     * @param clave
+     * @param tipo 
      */ 
     public Elemento(String correo, String clave, int tipo) {
         this.correo = correo;
         this.clave = clave;
         this.tipo = tipo;
-    }
-    
-    
+    }    
 
     /**
      * Constructor del chofer
+     * @param nombre
+     * @param apellido
+     * @param clave
+     * @param id
+     * @param tipo 
      */
     public Elemento(String nombre, String apellido, String clave, int id, int tipo) {
         this.nombre = nombre;
@@ -48,7 +60,22 @@ public class Elemento {
         this.clave = clave;
         this.id = id;
         this.tipo = tipo;
+        listaAsignaciones = new ListaDoble(0);
     }
+    
+    /**
+     * Constructor de las rutas
+     * @param nombre
+     * @param id 
+     */
+
+    public Elemento(String nombre, int id) {
+        this.nombre = nombre;
+        this.id = id;
+        listaEstaciones = new ListaDoble(0);
+    }
+    
+    
     
     
 
@@ -101,5 +128,12 @@ public class Elemento {
     public void setId(int id) {
         this.id = id;
     }
-    
+
+    public ListaDoble getListaEstaciones() {
+        return listaEstaciones;
+    }
+
+    public void setListaEstaciones(ListaDoble listaEstaciones) {
+        this.listaEstaciones = listaEstaciones;
+    }
 }

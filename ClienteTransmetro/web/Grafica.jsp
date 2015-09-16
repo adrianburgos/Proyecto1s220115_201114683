@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Administrador
-    Created on : 28-ago-2015, 10:28:56
-    Author     : Adrian
+    Document   : Grafica
+    Created on : 08-sep-2015, 14:15:20
+    Author     : Adrian Fernando Burgos Herrera 2011-14683
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Administrador</title>
+        <title>Grafica</title>
         <link rel="stylesheet" href="css/principal.css">
     </head>
     <body>
@@ -27,7 +27,7 @@
             <div id="menu">
                 <ul>
                     <li><a href="Principal.jsp">Inicio</a></li>
-                    <li class="current_page_item"><a href="Administrador.jsp">Administrador</a></li>
+                    <li><a href="Administrador.jsp">Administrador</a></li>
                     <li><a href="EstacionClave.jsp">Estación clave</a></li>
                     <li><a href="EstacionGeneral.jsp">Estación general</a></li>
                     <li><a href="Chofer.jsp">Chofer</a></li>
@@ -37,22 +37,9 @@
             <div id="page">
                 <div id="content">
                     <div class="post">
-                        <div class="title">
-                            Agregar Administrador
-                        </div>
                         <div class="entry">
-                            <form  name="fAdmin" action="AgregarAdmin.jsp" method="POST" class="form" >
-                                <input type="text" placeholder="Correo" name="tbCorreo" value="">
-                                <input type="password" placeholder="Clave" name="tbClave" value = "">
-                                <input type="submit" name="bAgregarAdmin" value="Agregar">
-                            </form>
+                            <img style="position: relative;" src="css/images/grafo.png" alt="grafo"/>
                         </div>
-                    </div>
-                </div>
-                <div id="sidebar-bg">
-                    <div id="sidebar">
-                        <h1>Vista previa</h1>
-                        <a href="Grafica.jsp"><img style="position: relative;" src="css/images/grafo.png" width="250" alt="grafo"/></a>
                     </div>
                 </div>
             </div>

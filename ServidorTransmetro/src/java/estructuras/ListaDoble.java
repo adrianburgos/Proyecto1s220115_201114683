@@ -6,6 +6,9 @@
  */
 package estructuras;
 
+import com.sun.tools.xjc.outline.ElementOutline;
+import java.util.Date;
+
 /**
  * @author Adrian Fernando Burgos Herrera
  * 2011 14683
@@ -15,7 +18,7 @@ public class ListaDoble {
     //ATRIBUTOS
     public NodoSimple inicio, fin;
     //pila o cola
-    int tipoEstrcutura;
+    int tipoEstructura;
     int numDatos;
     
     public ListaDoble()
@@ -24,6 +27,21 @@ public class ListaDoble {
         fin = null;
         numDatos = 0;
     }
+    
+    /**
+     * Constructor para establecer tipo de estructura
+     * 1 representa PILA
+     * cualquier otro numero representa COLA
+     * @param tipoEstructura 
+     */
+    public ListaDoble(int tipoEstructura) {
+        inicio = null;
+        fin = null;
+        numDatos = 0;
+        this.tipoEstructura = tipoEstructura;
+    }
+    
+    
     
     public boolean estaVacia()
     {
@@ -98,13 +116,26 @@ public class ListaDoble {
     {
         //cantidad de datos insertados en la lista para la representacion grafica
         numDatos++;
+        Elemento x = (Elemento) elemento;
+        //no se pueden repetir identificadores dentro de la lista
+        if(buscarId(x.getId()) == null)
+            //no importa si es pila o cola los elementos se insertan al final
+            return insertarFinal(elemento);
+        else
+            return false;
+    }
+    
+    public boolean insertarEstacion(Object elemento)
+    {
+        //cantidad de datos insertados en la lista para la representacion grafica
+        numDatos++;
         //no importa si es pila o cola los elementos se insertan al final
         return insertarFinal(elemento);
     }
     
     public Object eliminar()
     {
-        if(tipoEstrcutura == 1)
+        if(tipoEstructura == 1)
         {//la lista (this) se comporta como una pila
             return eliminarFinal();
         }
@@ -143,17 +174,22 @@ public class ListaDoble {
         return null;
     }
     
-    public boolean buscarTipo(int tipo)
+    /**
+     * Busca un Elemento por su ID
+     * @param id
+     * @return retorna el Elemento con el ID correspondiente
+     */
+    public Object buscarId(int id)
     {//busca si existe el tipo de personaje deseado dentro de la lista
         NodoSimple actual = inicio;
         while(actual != null)
         {
             Elemento x = (Elemento) actual.dato;
-            if(x.getTipo() == tipo)
-                return true;
+            if(x.getId()== id)
+                return actual.dato;
             actual = actual.siguiente;
         }
-        return false;
+        return null;
     }
     
     private NodoSimple buscarPos(int pos)
@@ -171,6 +207,32 @@ public class ListaDoble {
         return null;
     }
     
+    public String recorridoComboBox()
+    {
+        String recorrido = "";
+        NodoSimple actual = inicio;
+        while(actual != null)
+        {
+            Elemento x = (Elemento) actual.dato;
+            recorrido += "<option value = \"" + x.getId() + "\">" + x.getNombre() + "</option>" ;
+            actual = actual.siguiente;
+        }
+        return recorrido;
+    }
+    
+    public String recoridoComboBoxBuses()
+    {
+        String recorrido = "";
+        NodoSimple actual = inicio;
+        while(actual != null)
+        {
+            Elemento x = (Elemento) actual.dato;
+            recorrido += "<option value = \"" + x.getId() + "\">" + x.getId()+ "</option>" ;
+            actual = actual.siguiente;
+        }
+        return recorrido;
+    }
+    
     public String generarGrafoBuses()
     {
         String grafo = "digraph G\n{\n";
@@ -184,11 +246,93 @@ public class ListaDoble {
         
         NodoSimple actual = inicio;
         int cont = 1;
-        int x;
+        Elemento x;
         while (actual != null)
         {//se crean los nodos del grafo
-            x = (int) actual.dato;
-            grafo += "nodo" + cont + "[label = \"idBus: " + x + "\"];\n";
+            x = (Elemento) actual.dato;
+            grafo += "nodo" + cont + "[label = \"idBus: " + x.getId() + "\"];\n";
+            cont++;
+            actual = actual.siguiente;
+        }
+        
+        actual = inicio;
+        cont = 1;
+        while (actual != null)
+        {//se crean los enlaces entre nodos del grafo
+            if(actual.siguiente != null)
+            {
+                grafo += "nodo" + cont + " -> nodo" + (cont+1) + ";\n";
+                cont++;
+            }
+            actual = actual.siguiente;
+        }
+        grafo += "}";
+        return grafo;
+    }
+    
+    public String generarGrafoRutas()
+    {
+        String grafo = "digraph G\n{\n";
+        grafo += "node [shape = box, style = \"rounded, filled\", color = black, fontcolor = white];\n";
+        grafo += "style = filled;\n";
+        grafo += "bgcolor = lightgray;\n";
+        grafo += "orientatio = landscape;\n";
+        grafo += "center = true;\n";
+        grafo += "edge [arrowhead = odot, arrowtail = odot, color = red, dir = both];\n";
+        grafo += "label = \" Lista doblemente enlazada de Rutas \";\n";
+        
+        NodoSimple actual = inicio;
+        int cont = 1;
+        Elemento x;
+        while (actual != null)
+        {//se crean los nodos del grafo
+            x = (Elemento) actual.dato;
+            grafo += "nodo" + cont + "[label = \"idRuta: " + x.getId() + "\n Nombre: " + x.getNombre() +"\"];\n";
+            cont++;
+            actual = actual.siguiente;
+        }
+        
+        actual = inicio;
+        cont = 1;
+        while (actual != null)
+        {//se crean los enlaces entre nodos del grafo
+            if(actual.siguiente != null)
+            {
+                grafo += "nodo" + cont + " -> nodo" + (cont+1) + ";\n";
+                cont++;
+            }
+            actual = actual.siguiente;
+        }
+        grafo += "}";
+        return grafo;
+    }
+    
+    public String generarGrafoAsignaciones()
+    {
+        String grafo = "digraph G\n{\n";
+        grafo += "node [shape = box, style = \"rounded, filled\", color = black, fontcolor = white];\n";
+        grafo += "style = filled;\n";
+        grafo += "bgcolor = lightgray;\n";
+        grafo += "orientatio = landscape;\n";
+        grafo += "center = true;\n";
+        grafo += "edge [arrowhead = odot, arrowtail = odot, color = red, dir = both];\n";
+        grafo += "label = \" Lista doblemente enlazada de Asignaciones \";\n";
+        
+        NodoSimple actual = inicio;
+        int cont = 1;
+        Asignacion x;
+        while (actual != null)
+        {//se crean los nodos del grafo
+            x = (Asignacion) actual.dato;
+            Elemento bus = x.getBus();
+            Elemento ruta = x.getRuta();
+            Date horaInicio = x.getInicio();
+            Date horaFin = x.getFin();
+            Date Fecha = x.getFecha();
+            grafo += "nodo" + cont + "[label = \"idBus: " + bus.getId() + "\n idRuta: " + ruta.getId()+""
+                    + "\n Hora de inicio: " + horaInicio.toString() + ""
+                    + "\n Hora de fin: " + horaFin.toString() + ""
+                    + "\n Fecha:" + Fecha.toString() + "\"];\n";
             cont++;
             actual = actual.siguiente;
         }
@@ -209,11 +353,11 @@ public class ListaDoble {
     }
     
     public int getTipoEstrcutura() {
-        return tipoEstrcutura;
+        return tipoEstructura;
     }
 
-    public void setTipoEstrcutura(int tipoEstrcutura) {
-        this.tipoEstrcutura = tipoEstrcutura;
+    public void setTipoEstrcutura(int tipoEstructura) {
+        this.tipoEstructura = tipoEstructura;
     }
 
     public int getNumDatos() {

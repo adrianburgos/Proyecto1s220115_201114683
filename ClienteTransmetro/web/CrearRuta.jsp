@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AgregarBus
-    Created on : 07-sep-2015, 18:20:22
+    Document   : CrearRuta
+    Created on : 13-sep-2015, 20:47:24
     Author     : Adrian Fernando Burgos Herrera 2011-14683
 --%>
 
@@ -9,7 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Crear ruta</title>
+        <%
+            int id = 0;
+            String nombre = "";
+        %>
     </head>
     <body>
         <%-- start web service invocation --%><hr/>
@@ -18,11 +22,12 @@
             Cliente.ConsultasArbol_Service service = new Cliente.ConsultasArbol_Service();
             Cliente.ConsultasArbol port = service.getConsultasArbolPort();
              // TODO initialize WS operation arguments here
-            int idBus = Integer.parseInt(request.getParameter("tbIdBus"));
+            id = Integer.parseInt(request.getParameter("tbIdRuta"));
+            nombre = request.getParameter("tbNombreRuta");
             // TODO process result here
-            java.lang.String result = port.insertarBus(idBus);
-            out.println("Result = "+result);
-            response.sendRedirect("Chofer.jsp");
+            java.lang.String result = port.crearRuta(id, nombre);
+            out.println(result);
+            response.sendRedirect("Chofer.jsp?x=1&id=" + String.valueOf(id) +"&nombre=" + nombre);
         } catch (Exception ex) {
             // TODO handle custom exceptions here
         }
