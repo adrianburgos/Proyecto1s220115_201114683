@@ -420,7 +420,7 @@ public class ListaDoble {
                     if(!listaEstaciones.estaVacia())
                     {
                         if(listaEstaciones.siguienteEstacion(idEstacion) != null)
-                            return asignacion;
+                            return actual;
                     }
                 }
             }
@@ -447,81 +447,10 @@ public class ListaDoble {
                     estacion.setLeToca(false);
                     return estacion;
                 }
-                return null;
             }
             actual = actual.siguiente;
         }
         return null;
-    }
-    
-    /**
-     * Copia la listaOriginal dentro de la lista deseada sin alterar los datos de la lista original
-     * @param listaOriginal 
-     */
-    public ListaDoble copiarLista()
-    {
-        NodoSimple actual = inicio;
-        ListaDoble listaCopia = new ListaDoble(0);
-        while(actual != null)
-        {
-            Elemento x = (Elemento) actual.dato;
-            Elemento copia = x.copiarElemento();
-            listaCopia.insertarEstacion(copia);
-            actual = actual.siguiente;
-        }
-        return listaCopia;
-    }
-    
-    public String generarGrafoListaHoras(int idBus)
-    {
-        String grafo = "digraph G\n{\n";
-        grafo += "node [shape = box, style = \"rounded, filled\", color = black, fontcolor = white];\n";
-        grafo += "style = filled;\n";
-        grafo += "bgcolor = lightgray;\n";
-        grafo += "orientatio = landscape;\n";
-        grafo += "center = true;\n";
-        grafo += "edge [arrowhead = odot, arrowtail = odot, color = red, dir = both];\n";
-        grafo += "label = \" Horas de paso \";\n";
-        //lista de asignaciones
-        Integer cont = 1;
-        NodoSimple actual = inicio;
-        Asignacion x;
-        while (actual != null)
-        {//se crean los nodos del grafo
-            x = (Asignacion) actual.dato;
-            if(idBus == x.getBus().getId())
-                x.listaRegistos.listaHoras(cont);
-            actual = actual.siguiente;
-        }
-        grafo += "}";
-        return grafo;
-    }
-    
-    private String listaHoras(Integer cont)
-    {
-        String grafo = "";
-        NodoSimple actual = inicio;
-        Elemento x;
-        while (actual != null)
-        {//se crean los nodos del grafo
-            x = (Elemento) actual.dato;
-            grafo += "nodo" + cont + "[label = \"Fecha: " + x.getNombre() + "\"];\n";
-            cont++;
-            actual = actual.siguiente;
-        }
-        
-        actual = inicio;
-        cont = 1;
-        while (actual != null)
-        {//se crean los enlaces entre nodos del grafo
-            if(actual.siguiente != null)
-            {
-                grafo += "nodo" + cont + " -> nodo" + (cont+1) + ";\n";
-                cont++;
-            }
-            actual = actual.siguiente;
-        }
-        return grafo;
     }
     
     public int getTipoEstrcutura() {
@@ -535,14 +464,7 @@ public class ListaDoble {
     public int getNumDatos() {
         return numDatos;
     }
-
-    public NodoSimple getInicio() {
-        return inicio;
-    }
-
-    public void setInicio(NodoSimple inicio) {
-        this.inicio = inicio;
-    }    
+    
 }
 
 

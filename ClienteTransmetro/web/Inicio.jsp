@@ -20,6 +20,12 @@
                     <form  name="fInicio" action="Validacion.jsp" method="POST" class="form" >
                         <input type="text" placeholder="Id usuario" name="tbId" value="">
                         <input type="password" placeholder="Clave" name="tbClave" value = "">
+                        <select name="cbTipo">
+                            <option value="1">Administrador</option>
+                            <option value="2">Estacion clave</option>
+                            <option value="3">Estacion general</option>
+                            <option value="4">Chofer</option>
+                        </select>
                         <input type="submit" name="bIniciar" value="Iniciar sesión">
                     </form>
             </div>

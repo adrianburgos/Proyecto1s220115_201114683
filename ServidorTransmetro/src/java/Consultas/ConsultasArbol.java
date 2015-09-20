@@ -13,6 +13,7 @@ import estructuras.NodoArbol;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -39,11 +40,53 @@ public class ConsultasArbol {
      * Web service operation
      */
     @WebMethod(operationName = "IniciarSesion")
-    public int IniciarSesion(@WebParam(name = "id") String id, @WebParam(name = "clave") String clave) {
+    public int IniciarSesion(@WebParam(name = "id") String id, @WebParam(name = "clave") String clave, @WebParam(name = "tipo") int tipo) {
         if(id.equals("admin") && clave.equals("admin"))
         {
-            return 1;
-        }        
+            return 0;
+        }    
+        else
+        {
+            int idEstacion = 0;
+            switch(tipo)
+            {
+                case 1://administrador
+                    Elemento administrador = (Elemento)arbolArministradores.buscarAdministrador(id);
+                    if(administrador != null)
+                    {
+                        if(administrador.getClave().equals(clave))
+                            return 1;
+                    }
+                    break;
+                case 2://estacion clave
+                    idEstacion = Integer.parseInt(id);
+                    Elemento estacionClave = (Elemento) arbolEstacionClave.buscarEstacionClave(idEstacion);
+                    if(estacionClave != null)
+                    {
+                        if(estacionClave.getClave().equals(clave))
+                            return 2;
+                    }
+                    break;
+                case 3://estacion general
+                    idEstacion = Integer.parseInt(id);
+                    Elemento estacionGeneral = (Elemento) arbolEstacionGeneral.buscarEstacionClave(idEstacion);
+                    if(estacionGeneral != null)
+                    {
+                        if(estacionGeneral.getClave().equals(clave))
+                            return 3;
+                    }
+                    break;
+                case 4://chofer
+                    int idChofer = Integer.parseInt(id);
+                    Elemento chofer = (Elemento) arbolChoferes.buscarEstacionClave(idChofer);
+                    if(chofer != null)
+                    {
+                        if(chofer.getClave().equals(clave))
+                            return 4;
+                    }
+                    break;
+            }
+        }
         return -1;
     }
 
@@ -112,6 +155,7 @@ public class ConsultasArbol {
     public String insertarEstacionClave(@WebParam(name = "idEstacion") int idEstacion, @WebParam(name = "nombre") String nombre, @WebParam(name = "clave") String clave) {
         int tipo = 2;
         Elemento nuevoClave = new Elemento(nombre, clave, idEstacion, tipo);
+        nuevoClave.setLeToca(true);
         arbolEstacionClave.insertar(nuevoClave, tipo); 
         //System.out.println(arbolEstacionClave.recorridoAdmin());
         generarArchivo(arbolEstacionClave.generarGrafo(tipo));
@@ -208,7 +252,8 @@ public class ConsultasArbol {
     public String rutaClave(@WebParam(name = "idRuta") int idRuta, @WebParam(name = "idEstacionClave") int idEstacionClave) {
         Elemento ruta = (Elemento) listaRuta.buscarId(idRuta);
         Elemento estacionClave = (Elemento) arbolEstacionClave.buscarEstacionClave(idEstacionClave);
-        ruta.getListaEstaciones().insertarEstacion(estacionClave);
+        Elemento nuevaEstacion = estacionClave.copiarElemento();
+        ruta.getListaEstaciones().insertarEstacion(nuevaEstacion);
         generarArchivo(ruta.getListaEstaciones().generarGrafoRutas());
         return ruta.getListaEstaciones().generarGrafoRutas();
     }
@@ -220,7 +265,8 @@ public class ConsultasArbol {
     public String rutaGeneral(@WebParam(name = "idRuta") int idRuta, @WebParam(name = "idEstacionGeneral") int idEstacionGeneral) {
         Elemento ruta = (Elemento) listaRuta.buscarId(idRuta);
         Elemento estacionGeneral = (Elemento) arbolEstacionGeneral.buscarEstacionClave(idEstacionGeneral);
-        ruta.getListaEstaciones().insertarEstacion(estacionGeneral);
+        Elemento nuevaEstacion = estacionGeneral.copiarElemento();
+        ruta.getListaEstaciones().insertarEstacion(nuevaEstacion);
         generarArchivo(ruta.getListaEstaciones().generarGrafoRutas());
         return ruta.getListaEstaciones().generarGrafoRutas();
     }
@@ -271,11 +317,63 @@ public class ConsultasArbol {
         Elemento bus = (Elemento) listaBuses.buscarId(idBus);
         Elemento chofer = (Elemento) arbolChoferes.buscarChofer(idChofer);
         Elemento ruta = (Elemento) listaRuta.buscarId(idRuta);
-        Date horaInicio = new Date(inicio);
-        Date horaFin = new Date(fin);
-        Date Fecha = new Date(fecha);
-        Asignacion asignacion = new Asignacion(bus, chofer, ruta, horaInicio, horaFin, Fecha);
-        chofer.getListaEstaciones().insertarEstacion(asignacion);
+        Elemento rutaExtra = new Elemento(ruta);
+        Date horaInicio = new Date();
+        Date horaFin = new Date();
+        Date Fecha = new Date();
+        Asignacion asignacion = new Asignacion(bus, chofer, rutaExtra, horaInicio, horaFin, Fecha);
+        chofer.getListaAsignaciones().insertarEstacion(asignacion);
+        generarArchivo(chofer.getListaAsignaciones().generarGrafoAsignaciones());
+        return chofer.getListaAsignaciones().generarGrafoAsignaciones();
+    }
+
+    /**
+     * Solicita un nuevo bus para la estacion deseada
+     * @param idEstacion
+     * @return 
+     */
+    @WebMethod(operationName = "solicitarBus")
+    public String solicitarBus(@WebParam(name = "idEstacion") int idEstacion) {
+        Asignacion solicitud = (Asignacion) arbolChoferes.siguienteAsignacion(idEstacion);
+        if(solicitud != null)
+        {
+            Date fecha = new Date();
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd 'de' MMM 'del' yyyy 'a las' hh:mm:ss");
+            //el nombre sera la fecha para el registro
+            Elemento registro = new Elemento(formatoFecha.format(fecha), idEstacion);
+            solicitud.getListaRegistos().insertarEstacion(registro);
+            generarArchivo(solicitud.getListaRegistos().generarGrafoRegistro());
+            return String.valueOf(solicitud.getBus().getId());
+        }
         return null;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "recorridoGeneral")
+    public String recorridoGeneral() {
+        return arbolEstacionGeneral.recorridoGeneral();
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "reportes")
+    public String reportes(@WebParam(name = "tipoReporte") int tipoReporte, @WebParam(name = "idChofer") int idChofer, @WebParam(name = "idBus") int idBus) {
+        if(tipoReporte == 1)
+        {
+            Elemento chofer = (Elemento) arbolChoferes.buscarChofer(idChofer);
+            generarArchivo(chofer.getListaAsignaciones().generarGrafoAsignaciones());
+        }
+        else
+            if(tipoReporte == 2)
+            {
+                Elemento chofer = (Elemento) arbolChoferes.buscarChofer(idChofer);
+                generarArchivo(chofer.getListaAsignaciones().generarGrafoListaHoras(idBus));
+            }
+        return null;
+    }
+    
+    
 }

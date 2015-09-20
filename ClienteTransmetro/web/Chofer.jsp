@@ -105,8 +105,8 @@
                                         <%-- end web service invocation --%><hr/>
                                 </select>
                                 <input type="time" placeholder="Hora de inicio" name="tbInicio" value="">
-                                <input type="time" placeholder="Hora de finalizar" name="tbInicio" value="">
-                                <input type="date" placeholder="Fecha" name="tbFehca" value = "">
+                                <input type="time" placeholder="Hora de finalizar" name="tbFin" value="">
+                                <input type="date" placeholder="Fecha" name="tbFecha" value = "">
                                 <input type="submit" name="bAsignacion" value="Asignar">
                             </form>
                         </div>
@@ -193,11 +193,14 @@
                                         %>            
                                 </div>
                             </li>
+                            <li>
+                                <h1>Vista previa</h1>
+                                <a href="Grafica.jsp"><img style="position: relative;" src="css/images/grafo.png" width="250" alt="grafo"/></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            </form>
         </div>
         <div id="footer">
             <p>2015 EDD Adrian Fernando Burgos Herrera 2011 14683</p>

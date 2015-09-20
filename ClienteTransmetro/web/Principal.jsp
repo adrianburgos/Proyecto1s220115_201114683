@@ -34,6 +34,76 @@
                     <li><a href="Inicio.jsp">Cerrar sesión</a></li>
                 </ul>
             </div>
+            <div id="page">
+                <div id="content">
+                    <div class="post">
+                        <div class="title">
+                            Reportes
+                        </div>
+                        <div class="entry">
+                            <form  name="fClave" action="Reportes.jsp?reporte=1" method="POST" class="form" >
+                                <p>Lista de buses asignados a un chofer</p>
+                                <select name="cbChoferes">
+                                    <%
+                                    try {
+                                        Cliente.ConsultasArbol_Service service = new Cliente.ConsultasArbol_Service();
+                                        Cliente.ConsultasArbol port = service.getConsultasArbolPort();
+                                        // TODO process result here
+                                        java.lang.String result = port.cbChoferes();
+                                        out.println(result);
+                                    } catch (Exception ex) {
+                                        // TODO handle custom exceptions here
+                                    }
+                                    %>
+                                </select>
+                                <input type="submit" name="bGrafica" value="Generar grafica">
+                            </form>
+                        </div>
+                        <div class="entry">
+                            <form  name="fClave" action="Reportes.jsp?reporte=2" method="POST" class="form" >
+                                <p>Lista de horarios de un chofer y bus especifico</p>
+                                <select name="cbChoferes">
+                                    <%
+                                    try {
+                                        Cliente.ConsultasArbol_Service service = new Cliente.ConsultasArbol_Service();
+                                        Cliente.ConsultasArbol port = service.getConsultasArbolPort();
+                                        // TODO process result here
+                                        java.lang.String result = port.cbChoferes();
+                                        out.println(result);
+                                    } catch (Exception ex) {
+                                        // TODO handle custom exceptions here
+                                    }
+                                    %>
+                                </select>
+                                
+                                <select name="cbBuses">
+                                    <%
+                                    try {
+                                        Cliente.ConsultasArbol_Service service = new Cliente.ConsultasArbol_Service();
+                                        Cliente.ConsultasArbol port = service.getConsultasArbolPort();
+                                        // TODO process result here
+                                        java.lang.String result = port.cbBuses();
+                                        out.println(result);
+                                    } catch (Exception ex) {
+                                        // TODO handle custom exceptions here
+                                    }
+                                    %>
+                                </select>
+                                <input type="submit" name="bGrafica" value="Generar grafica">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="title">
+                            Resumen
+                        </div>
+                        <div class="entry">
+                            <form  name="fClave" action="Resumen.jsp" method="POST" class="form" >
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="footer">
             <p>2015 EDD Adrian Fernando Burgos Herrera 2011 14683</p>

@@ -44,6 +44,10 @@
 
 <xs:element name="insertarAdminResponse" type="tns:insertarAdminResponse"/>
 
+<xs:element name="insertarAsignacion" type="tns:insertarAsignacion"/>
+
+<xs:element name="insertarAsignacionResponse" type="tns:insertarAsignacionResponse"/>
+
 <xs:element name="insertarBus" type="tns:insertarBus"/>
 
 <xs:element name="insertarBusResponse" type="tns:insertarBusResponse"/>
@@ -56,6 +60,14 @@
 
 <xs:element name="insertarEstacionGeneralResponse" type="tns:insertarEstacionGeneralResponse"/>
 
+<xs:element name="recorridoGeneral" type="tns:recorridoGeneral"/>
+
+<xs:element name="recorridoGeneralResponse" type="tns:recorridoGeneralResponse"/>
+
+<xs:element name="reportes" type="tns:reportes"/>
+
+<xs:element name="reportesResponse" type="tns:reportesResponse"/>
+
 <xs:element name="rutaClave" type="tns:rutaClave"/>
 
 <xs:element name="rutaClaveResponse" type="tns:rutaClaveResponse"/>
@@ -63,6 +75,10 @@
 <xs:element name="rutaGeneral" type="tns:rutaGeneral"/>
 
 <xs:element name="rutaGeneralResponse" type="tns:rutaGeneralResponse"/>
+
+<xs:element name="solicitarBus" type="tns:solicitarBus"/>
+
+<xs:element name="solicitarBusResponse" type="tns:solicitarBusResponse"/>
 
 <xs:complexType name="generarArchivo">
 <xs:sequence>
@@ -84,11 +100,33 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="recorridoGeneral">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="recorridoGeneralResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="cbRutas">
 <xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="cbRutasResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="solicitarBus">
+<xs:sequence>
+<xs:element name="idEstacion" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="solicitarBusResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
@@ -122,6 +160,7 @@
 <xs:sequence>
 <xs:element name="id" type="xs:string" minOccurs="0"/>
 <xs:element name="clave" type="xs:string" minOccurs="0"/>
+<xs:element name="tipo" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -156,14 +195,32 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="rutaClave">
+<xs:complexType name="reportes">
 <xs:sequence>
-<xs:element name="idRuta" type="xs:int"/>
-<xs:element name="idEstacionClave" type="xs:int"/>
+<xs:element name="tipoReporte" type="xs:int"/>
+<xs:element name="idChofer" type="xs:int"/>
+<xs:element name="idBus" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="rutaClaveResponse">
+<xs:complexType name="reportesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertarAsignacion">
+<xs:sequence>
+<xs:element name="idBus" type="xs:int"/>
+<xs:element name="idChofer" type="xs:int"/>
+<xs:element name="idRuta" type="xs:int"/>
+<xs:element name="inicio" type="xs:string" minOccurs="0"/>
+<xs:element name="fin" type="xs:string" minOccurs="0"/>
+<xs:element name="fecha" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertarAsignacionResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
@@ -177,6 +234,19 @@
 </xs:complexType>
 
 <xs:complexType name="crearRutaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="rutaClave">
+<xs:sequence>
+<xs:element name="idRuta" type="xs:int"/>
+<xs:element name="idEstacionClave" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="rutaClaveResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
@@ -218,16 +288,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="cbBuses">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="cbBusesResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="agregarChofer">
 <xs:sequence>
 <xs:element name="idChofer" type="xs:int"/>
@@ -251,6 +311,16 @@
 </xs:complexType>
 
 <xs:complexType name="rutaGeneralResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cbBuses">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="cbBusesResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>

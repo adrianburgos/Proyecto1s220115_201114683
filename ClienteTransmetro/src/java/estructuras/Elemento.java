@@ -18,7 +18,7 @@ public class Elemento {
     private int tipo;
     private ListaDoble listaEstaciones;
     private ListaDoble listaAsignaciones;
-    boolean leToca = true;
+    boolean leToca;
 
     /**
      * Constructor de las estaciones
@@ -77,31 +77,11 @@ public class Elemento {
         listaEstaciones = new ListaDoble(0);
     }
     
-    /**
-     * contructor para duplicar la ruta
-     * @param ruta 
-     */
-    public Elemento(Elemento ruta)
-    {
-        this.id = ruta.id;
-        this.nombre = ruta.nombre;
-        this.listaEstaciones = ruta.listaEstaciones.copiarLista();
-    }
     
-    /**
-     * Copia la estacion deseada
-     * @return 
-     */
-    public Elemento copiarElemento()
-    {
-        Elemento copia = new Elemento("", "", 0, 0);
-        copia.nombre = this.nombre;
-        copia.clave = this.clave;
-        copia.id = this.id;
-        copia.tipo = this.tipo;
-        copia.leToca = true;
-        return copia;
-    }
+    
+    
+
+    
     
     public String getNombre() {
         return nombre;

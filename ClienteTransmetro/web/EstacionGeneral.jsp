@@ -50,8 +50,13 @@
                         </div>
                     </div>
                 </div>
+                <div id="sidebar-bg">
+                    <div id="sidebar">
+                        <h1>Vista previa</h1>
+                        <a href="Grafica.jsp"><img style="position: relative;" src="css/images/grafo.png" width="250" alt="grafo"/></a>
+                    </div>
+                </div>
             </div>
-            </form>
         </div>
         <div id="footer">
             <p>2015 EDD Adrian Fernando Burgos Herrera 2011 14683</p>

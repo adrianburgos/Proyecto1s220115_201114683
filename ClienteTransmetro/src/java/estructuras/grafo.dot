@@ -5,6 +5,9 @@ style = filled;
 bgcolor = lightgray;
 orientatio = landscape;
 center = true;
-edge [arrowhead = odot, arrowtail = odot, color = red, dir = both];
-label = " Horas de paso ";
+edge [arrowhead = none, arrowtail = none, color = red, dir = both];
+nodo1[label = "Correo (adrian@hotmail.com)
+Clave: adrian"];
+label = " Arbol AVL Administradores ";
+
 }

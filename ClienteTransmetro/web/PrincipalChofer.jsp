@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Grafica
-    Created on : 08-sep-2015, 14:15:20
+    Document   : PrincipalChofer
+    Created on : 17-sep-2015, 22:58:27
     Author     : Adrian Fernando Burgos Herrera 2011-14683
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Grafica</title>
+        <title>Principal Chofer</title>
         <link rel="stylesheet" href="css/principal.css">
     </head>
     <body>
@@ -26,22 +26,9 @@
             </div>
             <div id="menu">
                 <ul>
-                    <li><a href="Principal.jsp">Inicio</a></li>
-                    <li><a href="Administrador.jsp">Administrador</a></li>
-                    <li><a href="EstacionClave.jsp">Estación clave</a></li>
-                    <li><a href="EstacionGeneral.jsp">Estación general</a></li>
-                    <li><a href="Chofer.jsp">Chofer</a></li>
-                    <li><a href="Inicio.jsp">Cerrar sesión</a></li>
+                    <li class="current_page_item"><a href="PrincipalChofer.jsp">Inicio</a></li>
+                    <li><a href="#">Administrador</a></li>
                 </ul>
-            </div>
-            <div id="page">
-                <div id="content">
-                    <div class="post">
-                        <div class="entry">
-                            <img style="position: relative;" src="css/images/grafo.png" alt="grafo"/>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div id="footer">

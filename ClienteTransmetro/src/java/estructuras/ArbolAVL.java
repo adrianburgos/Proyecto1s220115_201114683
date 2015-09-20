@@ -631,7 +631,7 @@ public class ArbolAVL {
     public Object siguienteAsignacion(int idEstacion)
     {
         return siguienteAsignacion(raiz, idEstacion);
-    }
+}
     
     private Object siguienteAsignacion(NodoArbol raiz, int idEstacion)
     {
@@ -658,45 +658,4 @@ public class ArbolAVL {
         }
         return null;
     }
-    
-    public String recorridoGeneral()
-    {
-        return recorridoGeneral(raiz);
-    }
-    
-    private String recorridoGeneral(NodoArbol raiz)
-    {
-        String recorrido = "";
-        if(raiz != null)
-        {
-            Elemento x = (Elemento)raiz.dato;
-            recorrido+="<div class=\"post\">"
-                    + "<div class=\"title\">" 
-                        + "Estacion: " + x.getNombre()
-                    + "</div>"
-                        + "<div class=\"entry\">"
-                            + "<form name=\"fGeneral" + x.getId() + "\" action=\"nuevoBus.jsp?idGeneral=" + x.getId() + "\" method=\"POST\">"
-                                + "<input type=\"submit\" name=\"bNuevo\" value=\"Registra nuevo bus\">"
-                                + " <% "
-                                + "if(request.getParameter(\"idBus\") != null && request.getParameter(\"idGeneral\") != null)\n"
-                                +"{"
-                                    + "int idGeneral = Integer.parseInt(request.getParameter(\"idGeneral\"));"
-                                    + "if(idGeneral == " + x.getId() + ")"
-                                    + "{"
-                                        + " int idBus = Integer.parseInt(request.getParameter(\"idBus\"));"
-                                        + " if(idBus == -1)"
-                                        + " out.println(\"<p>No hay bus disponible para esta estacion</p>\");"
-                                        + " else "
-                                        + " out.println(\"<p>Bus actual: \" + idBus + \"</p>\");"
-                                    + "}" 
-                                + "}" 
-                                + " %> "
-                            + "</form>"
-                        + "</div>"
-                    + "</div>";
-            recorrido += recorridoGeneral(raiz.izq);
-            recorrido += recorridoGeneral(raiz.der);
-        }
-        return recorrido;
-    }   
 }

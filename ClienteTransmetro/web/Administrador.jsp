@@ -56,7 +56,6 @@
                     </div>
                 </div>
             </div>
-            </form>
         </div>
         <div id="footer">
             <p>2015 EDD Adrian Fernando Burgos Herrera 2011 14683</p>
